@@ -1,0 +1,52 @@
+<ActionBar title="Login">
+  <NavigationButton visibility="collapsed"></NavigationButton>
+</ActionBar>
+
+<GridLayout class="page">
+  <ScrollView>
+    <StackLayout class="form p-4">
+      <Image src="~/assets/logo.png" class="logo m-b-4" height="120"></Image>
+      
+      <StackLayout class="input-field m-b-4">
+        <Label text="Email" class="label"></Label>
+        <TextField
+          [(ngModel)]="email"
+          keyboardType="email"
+          autocorrect="false"
+          autocapitalizationType="none"
+          class="input"
+          hint="Enter your email">
+        </TextField>
+      </StackLayout>
+
+      <StackLayout class="input-field m-b-4">
+        <Label text="Password" class="label"></Label>
+        <TextField
+          [(ngModel)]="password"
+          secure="true"
+          class="input"
+          hint="Enter your password">
+        </TextField>
+      </StackLayout>
+
+      <Button
+        text="Login"
+        (tap)="onLogin()"
+        [isEnabled]="!loading"
+        class="btn btn-primary m-b-4">
+      </Button>
+
+      <Button
+        text="Register"
+        [nsRouterLink]="['/auth/register']"
+        [isEnabled]="!loading"
+        class="btn btn-secondary">
+      </Button>
+
+      <app-loading
+        *ngIf="loading"
+        message="Logging in...">
+      </app-loading>
+    </StackLayout>
+  </ScrollView>
+</GridLayout>

@@ -1,0 +1,62 @@
+<ActionBar title="Register">
+  <NavigationButton text="Back"></NavigationButton>
+</ActionBar>
+
+<GridLayout class="page">
+  <ScrollView>
+    <StackLayout class="form p-4">
+      <Image src="~/assets/logo.png" class="logo m-b-4" height="120"></Image>
+      
+      <StackLayout class="input-field m-b-4">
+        <Label text="Email" class="label"></Label>
+        <TextField
+          [(ngModel)]="email"
+          keyboardType="email"
+          autocorrect="false"
+          autocapitalizationType="none"
+          class="input"
+          hint="Enter your email">
+        </TextField>
+      </StackLayout>
+
+      <StackLayout class="input-field m-b-4">
+        <Label text="Password" class="label"></Label>
+        <TextField
+          [(ngModel)]="password"
+          secure="true"
+          class="input"
+          hint="Enter your password">
+        </TextField>
+      </StackLayout>
+
+      <StackLayout class="input-field m-b-4">
+        <Label text="Confirm Password" class="label"></Label>
+        <TextField
+          [(ngModel)]="confirmPassword"
+          secure="true"
+          class="input"
+          hint="Confirm your password">
+        </TextField>
+      </StackLayout>
+
+      <Button
+        text="Register"
+        (tap)="onRegister()"
+        [isEnabled]="!loading"
+        class="btn btn-primary m-b-4">
+      </Button>
+
+      <Button
+        text="Back to Login"
+        [nsRouterLink]="['/auth/login']"
+        [isEnabled]="!loading"
+        class="btn btn-secondary">
+      </Button>
+
+      <app-loading
+        *ngIf="loading"
+        message="Creating account...">
+      </app-loading>
+    </StackLayout>
+  </ScrollView>
+</GridLayout>
